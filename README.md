@@ -2,6 +2,18 @@
 
 ![goad.png](./docs/img/GOAD.png)
 
+## Modifications to support Proxmox VE environment
+This is my own personal fork of GOAD that has been modified to support Proxmox VE instead of using Vagrant. As a quick summary of how you would quickly set this up:
+1. Manually setup 5x Windows VM according to the network diagram provided in the repo. 4GB of RAM + 32GB thin provisioned is sufficient for our needs.
+2. Manually configure the network adapter information by statically assign the IP address and DNS settings. Remember to statically assign a public DNS IP as Ansible will need to add PowerShell repos to download packages and etc.
+3. Disable the Public firewall profile or enable WinRM to be accessible in the Public firewall profile.
+4. Test the WinRM ports to see if it's accessible from another machine. As well, these WinRM settings will need to be applied:
+  ```
+  winrm set winrm/config/service/auth '@{Basic="true"}'
+  winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+  ```
+5. After you performed all those steps above: sync this repo and reconfigure the ansible inventory file (hosts). Change the IP addresses, username and passwords accordingly. GLHF.
+
 ## Description
 GOAD is a pentest active directory LAB project.
 The purpose of this lab is to give pentesters a vulnerable Active directory environment ready to use to practice usual attack techniques.
