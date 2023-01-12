@@ -12,7 +12,8 @@ This is my own personal fork of GOAD that has been modified to support Proxmox V
   winrm set winrm/config/service/auth '@{Basic="true"}'
   winrm set winrm/config/service '@{AllowUnencrypted="true"}'
   ```
-5. After you performed all those steps above: sync this repo and reconfigure the ansible inventory file (hosts). Change the IP addresses, username and passwords accordingly. GLHF.
+5. After you performed all those steps above: sync this repo and reconfigure the ansible inventory file (hosts). Change the IP addresses, username and passwords accordingly. Run the playbook and GLHF.
+6. If you have successfully completed the playbook, log back into the machines using local administrator and statically assign the IP addresses on the NIC or assign them through your network device.
 
 ## Description
 GOAD is a pentest active directory LAB project.
