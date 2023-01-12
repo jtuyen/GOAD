@@ -1,5 +1,5 @@
-- name: "disable interface {{nat_adapter}} before join domain"
-  win_shell: netsh interface set interface "{{nat_adapter}}" disable
+#- name: "disable interface {{nat_adapter}} before join domain"
+#  win_shell: netsh interface set interface "{{nat_adapter}}" disable
 
 - name: Ensure that domain exists
   win_domain:
@@ -29,12 +29,12 @@
     post_reboot_delay: 100
   when: check_domain_controller.changed
 
-- name: "enable interface {{nat_adapter}} after domain joined"
-  win_shell: netsh interface set interface "{{nat_adapter}}" enable
-  register: enable_interface_dc
-  until: "enable_interface_dc is not failed"
-  retries: 3
-  delay: 120
+  #- name: "enable interface {{nat_adapter}} after domain joined"
+  #  win_shell: netsh interface set interface "{{nat_adapter}}" enable
+  #  register: enable_interface_dc
+  #  until: "enable_interface_dc is not failed"
+  #  retries: 3
+  #  delay: 120
 
 - name: Check for xDnsServer Powershell module
   win_psmodule:

@@ -1,9 +1,9 @@
-- name: "Set configure dns to {{dns_domain}}"
-  win_dns_client:
-    adapter_names: "{{domain_adapter}}"
-    ipv4_addresses:
-    - "{{dns_domain}}"
-    log_path: C:\dns_log.txt
+#- name: "Set configure dns to {{dns_domain}}"
+#  win_dns_client:
+#    adapter_names: "{{domain_adapter}}"
+#    ipv4_addresses:
+#    - "{{dns_domain}}"
+#    log_path: C:\dns_log.txt
 
 # - name: "Add member server to {{parent_domain}}"
 #   win_domain_membership:
@@ -54,8 +54,8 @@
 #    ansible_become_pass: "{{password}}"
 #  when: not domain_child_log.stat.exists
 
-- name: "disable interface {{nat_adapter}} before join domain"
-  win_shell: netsh interface set interface "{{nat_adapter}}" disable
+  #- name: "disable interface {{nat_adapter}} before join domain"
+  #  win_shell: netsh interface set interface "{{nat_adapter}}" disable
 
 - name: add child domain to parent domain
   ansible.windows.win_powershell:
@@ -115,12 +115,12 @@
     post_reboot_delay: 100
   when: child_result.changed
 
-- name: "enable interface {{nat_adapter}} after domain joined"
-  win_shell: netsh interface set interface "{{nat_adapter}}" enable
-  register: enable_interface
-  until: "enable_interface is not failed"
-  retries: 3
-  delay: 120
+  #- name: "enable interface {{nat_adapter}} after domain joined"
+  #  win_shell: netsh interface set interface "{{nat_adapter}}" enable
+  #  register: enable_interface
+  #  until: "enable_interface is not failed"
+  #  retries: 3
+  #  delay: 120
 
 - name: "Install XactiveDirectory"
   win_psmodule:
