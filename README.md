@@ -4,7 +4,10 @@
 
 ## Modifications to support Proxmox VE environment
 This is my own personal fork of GOAD that has been modified to support Proxmox VE instead of using Vagrant. As a quick summary of how you would quickly set this up:
-1. Manually setup 5x Windows VM according to the network diagram provided in the repo. 4GB of RAM + 32GB thin provisioned is sufficient for our needs.
+1. Manually setup 5x Windows VM according to the network diagram provided in the repo. 4GB of RAM + 32GB thin provisioned is sufficient for our needs. If you are cloning from Proxmox images, you will need to run sysprep.
+  ```
+  C:\Windows\System32\Sysprep\sysprep.exe /generalize
+  ```
 2. Manually configure the network adapter information by statically assign the IP address and DNS settings. Remember to statically assign a public DNS IP as Ansible will need to add PowerShell repos to download packages and etc.
 3. Disable the Public firewall profile or enable WinRM to be accessible in the Public firewall profile.
   ```
