@@ -1,9 +1,9 @@
-#- name: "Set configure dns to {{dns_domain}}"
-#  win_dns_client:
-#    adapter_names: "{{domain_adapter}}"
-#    ipv4_addresses:
-#    - "{{dns_domain}}"
-#    log_path: C:\dns_log.txt
+- name: "Set configure dns to {{dns_domain}}"
+  win_dns_client:
+    adapter_names: "*"
+    ipv4_addresses:
+    - "{{dns_domain}}"
+    log_path: C:\dns_log.txt
 
 # - name: "Add member server to {{parent_domain}}"
 #   win_domain_membership:
