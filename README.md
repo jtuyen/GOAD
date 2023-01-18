@@ -9,6 +9,10 @@ This is my own personal fork of GOAD that has been modified to support Proxmox V
   C:\Windows\System32\Sysprep\sysprep.exe /generalize
   ```
 2. Manually configure the network adapter information by statically assign the IP address and DNS settings. Remember to statically assign a public DNS IP as Ansible will need to add PowerShell repos to download packages and etc.
+  ```
+  New-NetIPAddress -InterfaceIndex X –IPAddress X.X.X.X -DefaultGateway X.X.X.X -PrefixLength 24
+  Set-DNSClientServerAddress –InterfaceIndex X  –ServerAddresses 1.1.1.1
+  ```
 3. Disable the Public firewall profile or enable WinRM to be accessible in the Public firewall profile.
   ```
   netsh advfirewall set publicprofile state off
