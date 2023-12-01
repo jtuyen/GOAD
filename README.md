@@ -1,4 +1,4 @@
-# GOAD (Game Of Active Directory) - version 2
+# GOAD (Game Of Active Directory) - version 2 - DEPRECATED REPO. PACKER CONFIG IN ANOTHER REPO.
 
 ![goad.png](./docs/img/GOAD.png)
 
